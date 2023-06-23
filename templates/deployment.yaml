@@ -48,13 +48,13 @@ spec:
                   key: "{{ .Values.database.passwordkKeyName }}"
             {{ else }}
               value: "{{ .Values.database.password }}"
-              {{ end }}
+            {{ end }}
             - name: RP_DB_NAME
               value: "{{ .Values.database.dbName }}"
             {{- end }}
           ## ---
             - name: RP_SINGLEBUCKET_MIGRATION
-              value: {{ .Values.multiToSingle.enable }}
+              value: "{{ .Values.multiToSingle.enable }}"
             {{- if .Values.multiToSingle.enable }}
             - name: DATASTORE_TYPE
               value: "{{ .Values.multiToSingle.storageType }}"
