@@ -34,7 +34,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
             - name: RP_TOKEN_MIGRATION
-              value: {{ .Values.apiKey.enabled }}
+              value: "{{ .Values.apiKey.enabled }}"
             {{- if .Values.apiKey.enabled }}
             - name: RP_DB_HOST
               value: "{{ .Values.database.endpoint }}"
