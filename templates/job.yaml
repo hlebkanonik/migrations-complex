@@ -38,7 +38,7 @@ spec:
             - name: RP_DB_USER
               value: "{{ .Values.database.user }}"
             - name: RP_DB_PASS
-            {{ if .Values.database.SecretName }}
+            {{ if .Values.database.secretName }}
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Values.database.secretName }}"
@@ -60,7 +60,7 @@ spec:
             - name: RP_DB_USER
               value: "{{ .Values.database.user }}"
             - name: RP_DB_PASS
-            {{ if .Values.database.SecretName }}
+            {{ if .Values.database.secretName }}
               valueFrom:
                 secretKeyRef:
                   name: "{{ .Values.database.secretName }}"
