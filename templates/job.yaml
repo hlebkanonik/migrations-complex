@@ -30,9 +30,12 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           env:
+          # --- RP_TOKEN_MIGRATION ---
             - name: RP_TOKEN_MIGRATION
               value: "{{ .Values.apiKey.enabled }}"
             {{- if .Values.apiKey.enabled }}
+            - name: MIGRATIONS_PROFILES
+              value: "database"
             - name: RP_DB_HOST
               value: "{{ .Values.database.endpoint }}"
             - name: RP_DB_USER
@@ -49,10 +52,12 @@ spec:
             - name: RP_DB_NAME
               value: "{{ .Values.database.dbName }}"
             {{- end }}
-          ## ---
+          # --- RP_SINGLEBUCKET_MIGRATION ---
             - name: RP_SINGLEBUCKET_MIGRATION
               value: "{{ .Values.multiToSingle.enable }}"
             {{- if .Values.multiToSingle.enable }}
+            - name: MIGRATIONS_PROFILES
+              value: "database"
             - name: DATASTORE_TYPE
               value: "{{ .Values.multiToSingle.storageType }}"
             - name: RP_DB_HOST
@@ -122,7 +127,7 @@ spec:
             - name: DATASTORE_REMOVE_AFTER_MIGRATION
               value: "{{ .Values.multiToSingle.removeAfterMigration }}"
             {{- end }}
-            # ----
+            # ---- RP_MINIO_S3_MIGRATION ---
             - name: RP_MINIO_S3_MIGRATION
               value: "{{ .Values.singleMinioToSingleS3.enable }}"
             {{- if .Values.singleMinioToSingleS3.enable }}
