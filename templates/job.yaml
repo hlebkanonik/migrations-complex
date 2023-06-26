@@ -34,8 +34,6 @@ spec:
             - name: RP_TOKEN_MIGRATION
               value: "{{ .Values.apiKey.enabled }}"
             {{- if .Values.apiKey.enabled }}
-            - name: MIGRATIONS_PROFILES
-              value: "database"
             - name: RP_DB_HOST
               value: "{{ .Values.database.endpoint }}"
             - name: RP_DB_USER
@@ -56,8 +54,6 @@ spec:
             - name: RP_SINGLEBUCKET_MIGRATION
               value: "{{ .Values.multiToSingle.enable }}"
             {{- if .Values.multiToSingle.enable }}
-            - name: MIGRATIONS_PROFILES
-              value: "database"
             - name: DATASTORE_TYPE
               value: "{{ .Values.multiToSingle.storageType }}"
             - name: RP_DB_HOST
