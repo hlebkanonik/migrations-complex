@@ -118,7 +118,7 @@ spec:
             - name: DATASTORE_SINGLEBUCKETNAME
               value: "{{ .Values.multiToSingle.bucket.bucketSingleName }}"
             - name: DATASTORE_REGION
-              value: "{{ .Values.multiToSingle.s3.region }}"
+              value: "{{ .Values.s3.region }}"
             - name: DATASTORE_REMOVE_AFTER_MIGRATION
               value: "{{ .Values.multiToSingle.removeAfterMigration }}"
             {{- end }}
